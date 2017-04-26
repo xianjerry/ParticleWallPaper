@@ -1,4 +1,4 @@
-package per.xjx.paper;
+package per.xjx.global;
 
 import per.xjx.core.DrawCore;
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import android.view.SurfaceHolder;
 
 /**
  * 
- * ±ÚÖ½·şÎñÀà(±ÚÖ½³ÌĞòµÄÈë¿Ú)
+ * å£çº¸æœåŠ¡ç±»(å£çº¸ç¨‹åºçš„å…¥å£)
  * 
  * 
  */
-public class GameWallpaperService extends WallpaperService {
+public class Wallpaper extends WallpaperService {
 
 	
 	@Override
@@ -25,7 +25,7 @@ public class GameWallpaperService extends WallpaperService {
 	
 	
 	/**
-	 * ±ÚÖ½»æÖÆÒıÇæ
+	 * å£çº¸ç»˜åˆ¶å¼•æ“
 	 * 
 	 * 
 	 */
@@ -54,7 +54,7 @@ public class GameWallpaperService extends WallpaperService {
 			super.onVisibilityChanged(visible);
 			if(visible){
 				task.setPause(false);
-				// ±ä»¯ËùÓĞÁ£×Ó
+				// å˜åŒ–æ‰€æœ‰ç²’å­
 				task.changeAll();
 			}else{
 				task.setPause(true);

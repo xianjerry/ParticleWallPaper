@@ -1,6 +1,6 @@
 package per.xjx.core;
 
-import per.xjx.global.utils.DisplayUtils;
+import per.xjx.global.Application;
 import per.xjx.utils.CircleUtils;
 
 public class DrawCore extends Thread {
@@ -11,12 +11,12 @@ public class DrawCore extends Thread {
 	private android.view.SurfaceHolder holder;
 	private float d = 0;
 	
-	private CircleDrawManager circleManager;
+	private DrawManager circleManager;
 
 	public DrawCore(android.view.SurfaceHolder holder) {
 		this.holder = holder;
 		
-		circleManager = new CircleDrawManager(30);
+		circleManager = new DrawManager(30);
 	}
 
 	@Override
@@ -31,14 +31,14 @@ public class DrawCore extends Thread {
 				try {
 					canvas = holder.lockCanvas(null);
 					
-					// Ğı×ª»­²¼
-					canvas.rotate(d, DisplayUtils.getDisplayWidth() / 2,
-							DisplayUtils.getDisplayHeight() / 2);
+					// æ—‹è½¬ç”»å¸ƒ
+					canvas.rotate(d, Application.getInstance().getDisplayWidth() / 2,
+							Application.getInstance().getDisplayHeight() / 2);
 					d += 0.5;
 					
-					// »æÖÆµÄ¹Ø¼ü²½Öè
-					canvas.drawARGB((int) (0.05 * 256), 0, 0, 0); // »æÖÆÓĞÍ¸Ã÷¶ÈµÄºÚÉ«±³¾°
-					circleManager.drawContent(canvas); // »æÖÆÁ£×Ó
+					// ç»˜åˆ¶çš„å…³é”®æ­¥éª¤
+					canvas.drawARGB((int) (0.05 * 256), 0, 0, 0); // ç»˜åˆ¶æœ‰é€æ˜åº¦çš„é»‘è‰²èƒŒæ™¯
+					circleManager.drawContent(canvas); // ç»˜åˆ¶ç²’å­
 
 				} catch (Exception e) {
 					e.printStackTrace();

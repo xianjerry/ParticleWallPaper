@@ -7,24 +7,24 @@ import android.graphics.Color;
 
 /**
  * 
- * т╡пнаёвс╧╓╬ъюЮё╨<br/>
- * 1.╦д╠Даёвс╣дяуи╚<br/>
- * 2.╦д╠Даёвс╣д╢Сп║<br/>
- * 3.╦д╠Даёвс╣д╥╫оР
+ * Е°├Е╫╒Г╡▓Е╜░Е╥╔Е┘╥Г╠╩О╪ <br/>
+ * 1.Ф■╧Е▐≤Г╡▓Е╜░Г └И╒°Х┴╡<br/>
+ * 2.Ф■╧Е▐≤Г╡▓Е╜░Г └Е╓╖Е╟▐<br/>
+ * 3.Ф■╧Е▐≤Г╡▓Е╜░Г └Ф√╧Е░▒
  * 
- * @author ыЧ╪ном
+ * @author Е├╪Е≤┴Х╢╓
  * 
  */
 public class CircleUtils {
 	
 	/**
-	 * ╦д╠Даёвс╣дяуи╚
+	 * Ф■╧Е▐≤Г╡▓Е╜░Г └И╒°Х┴╡
 	 */
 	public static void changeColor(java.util.List<Circle> circles) {
 		Random r = new Random();
 		
 		for (int i = -1; ++i < circles.size();) {
-			// кФ╩З╦Э╩╩яуи╚
+			// И ▐Ф°╨Ф⌡╢Ф█╒И╒°Х┴╡
 			int[] colors = new int[] {
 					Color.WHITE,
 					Color.argb(r.nextInt(256), r.nextInt(256), r.nextInt(256),
@@ -34,7 +34,7 @@ public class CircleUtils {
 	}
 
 	/**
-	 * ╦д╠Даёвс╣д╟К╬╤
+	 * Ф■╧Е▐≤Г╡▓Е╜░Г └Е█┼Е╬└
 	 * 
 	 * @param circles
 	 */
@@ -48,27 +48,27 @@ public class CircleUtils {
 	}
 
 	/**
-	 * ╦д╠Даёвс╣дтк╤╞╥╫оР
+	 * Ф■╧Е▐≤Г╡▓Е╜░Г └Х©░Е┼╗Ф√╧Е░▒
 	 * 
 	 * @param circles
 	 */
 	public static void changeV(java.util.List<Circle> circles) {
 		Random r = new Random();
 		
-		if (r.nextInt(2) == 0) { // ц©р╩╦Жаёвс╣дтк╤╞╥╫оРкФ╩З
+		if (r.nextInt(2) == 0) { // Ф╞▐Д╦─Д╦╙Г╡▓Е╜░Г └Х©░Е┼╗Ф√╧Е░▒И ▐Ф°╨
 			for (int i = -1; ++i < circles.size();) {
-				float vx = (float) (r.nextFloat() * 5 + 5);
+				float vx = (r.nextFloat() * 5 + 5);
 				vx = r.nextInt(2) == 0 ? vx : -vx;
-				float vy = (float) (r.nextFloat() * 5 + 5);
+				float vy = (r.nextFloat() * 5 + 5);
 				vy = r.nextInt(2) == 0 ? vy : -vy;
 				
 				circles.get(i).setVx(vx);
 				circles.get(i).setVy(vy);
 			}
-		} else {// ц©р╩╦Жаёвс╣дтк╤╞╥╫оРр╩жб
-			float vx = (float) (r.nextFloat() * 5 + 5);
+		} else {// Ф╞▐Д╦─Д╦╙Г╡▓Е╜░Г └Х©░Е┼╗Ф√╧Е░▒Д╦─Х┤╢
+			float vx = (r.nextFloat() * 5 + 5);
 			vx = r.nextInt(2) == 0 ? vx : -vx;
-			float vy = (float) (r.nextFloat() * 5 + 5);
+			float vy = (r.nextFloat() * 5 + 5);
 			vy = r.nextInt(2) == 0 ? vy : -vy;
 			
 			for (int i = -1; ++i < circles.size();) {

@@ -1,28 +1,28 @@
 package per.xjx.model;
 
-import per.xjx.global.utils.DisplayUtils;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 
+import per.xjx.global.Application;
+
 /**
- * Ô²
+ * åœ†
  * 
  */
 public class Circle {
 
 	private static final Paint paint = new Paint();
-	// °ë¾¶
+	// åŠå¾„
 	private float radius = 50; 
-	// µ±Ç°x×ø±êºÍy×ø±ê
+	// å½“å‰xåæ ‡å’Œyåæ ‡
 	private float cx = 0;
 	private float cy = 0;
-	// x×ø±êºÍy×ø±êµÄÒÆ¶¯ËÙ¶È
+	// xåæ ‡å’Œyåæ ‡çš„ç§»åŠ¨é€Ÿåº¦
 	private float vx = 3;
 	private float vy = 3;
 	private int[] colors;
-	// »·ÐÎ½¥±ä
+	// çŽ¯å½¢æ¸å˜
 	private RadialGradient mRadialGradient;
 
 	public Circle(float radius, int[] colors, float cx, float cy, float vx,
@@ -43,7 +43,7 @@ public class Circle {
 
 	public void drawSelf(Canvas canvas) {
 
-		// ¸üÐÂÔ²ÐÎ½¥±ä
+		// æ›´æ–°åœ†å½¢æ¸å˜
 		mRadialGradient = new RadialGradient(cx, cy, radius, colors,
 				new float[] { 0.05f, 0.4f, 1 },
 				android.graphics.Shader.TileMode.CLAMP);
@@ -51,18 +51,18 @@ public class Circle {
 		
 		canvas.drawCircle(cx, cy, radius, paint);
 
-		// Î»ÖÃÒÆ¶¯
+		// ä½ç½®ç§»åŠ¨
 		cx += vx;
 		cy += vy;
 
-		// ÊÇ·ñÔÚÆÁÄ»Íâ
-		if (cx > DisplayUtils.getDisplayWidth()) {
+		// æ˜¯å¦åœ¨å±å¹•å¤–
+		if (cx > Application.getInstance().getDisplayWidth()) {
 			vx = -Math.abs(vx);
 		}
 		if (cx < 0) {
 			vx = Math.abs(vx);
 		}
-		if (cy > DisplayUtils.getDisplayHeight()) {
+		if (cy > Application.getInstance().getDisplayHeight()) {
 			vy = -Math.abs(vy);
 		}
 		if (cy < 0) {
