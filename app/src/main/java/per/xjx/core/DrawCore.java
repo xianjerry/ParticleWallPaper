@@ -16,7 +16,7 @@ public class DrawCore extends Thread {
 	public DrawCore(android.view.SurfaceHolder holder) {
 		this.holder = holder;
 		
-		circleManager = new DrawManager(30);
+		circleManager = new DrawManager(10);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class DrawCore extends Thread {
 	public void changeAll(){
 		changeColor();
 		changeRadius();
-		changeV();
+		changeDirection();
 	}
 
 	public void changeColor() {
@@ -87,7 +87,7 @@ public class DrawCore extends Thread {
 		CircleUtils.changeRadius(circleManager.getCircles());
 	}
 
-	public void changeV() {
-		CircleUtils.changeV(circleManager.getCircles());
+	public void changeDirection() {
+		CircleUtils.changeDirection(circleManager.getCircles());
 	}
 }

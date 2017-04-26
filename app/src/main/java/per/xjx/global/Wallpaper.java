@@ -41,7 +41,7 @@ public class Wallpaper extends WallpaperService {
 		@Override
 		public void onCreate(SurfaceHolder surfaceHolder) {
 			super.onCreate(surfaceHolder);
-			setTouchEventsEnabled(false);
+			setTouchEventsEnabled(true);
 		}
 
 		@Override
@@ -55,7 +55,7 @@ public class Wallpaper extends WallpaperService {
 			if(visible){
 				task.setPause(false);
 				// 变化所有粒子
-				task.changeAll();
+				// task.changeAll();
 			}else{
 				task.setPause(true);
 			}
@@ -64,6 +64,10 @@ public class Wallpaper extends WallpaperService {
 		@Override
 		public void onTouchEvent(MotionEvent event) {
 			super.onTouchEvent(event);
+
+			if(event.getAction() == MotionEvent.ACTION_UP){
+				task.changeAll();
+			}
 		}
 
 		@Override

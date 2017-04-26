@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <service
-            android:name="per.xjx.paper.per.xjx.global.Wallpaper"
+            android:name="per.xjx.global.Wallpaper"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_WALLPAPER" >
 

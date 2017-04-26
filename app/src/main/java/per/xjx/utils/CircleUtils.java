@@ -7,9 +7,9 @@ import android.graphics.Color;
 
 /**
  * 
- * 圆形粒子工具类：<br/>
- * 1.改变粒子的颜色<br/>
- * 2.改变粒子的大小<br/>
+ * 圆形粒子工具类：
+ * 1.改变粒子的颜色
+ * 2.改变粒子的大小
  * 3.改变粒子的方向
  * 
  * @author 冼嘉贤
@@ -52,7 +52,7 @@ public class CircleUtils {
 	 * 
 	 * @param circles
 	 */
-	public static void changeV(java.util.List<Circle> circles) {
+	public static void changeDirection(java.util.List<Circle> circles) {
 		Random r = new Random();
 		
 		if (r.nextInt(2) == 0) { // 每一个粒子的运动方向随机
