@@ -9,14 +9,20 @@ public class Application extends android.app.Application {
     private int displayWidth = 0;
 
     private static Application instance;
+    private AppConfig appConfig;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         instance = this;
+        appConfig = new AppConfig();
 
         init();
+    }
+
+    public AppConfig getAppConfig() {
+        return appConfig;
     }
 
     public static Application getInstance() {
