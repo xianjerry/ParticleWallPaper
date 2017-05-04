@@ -54,8 +54,6 @@ public class Wallpaper extends WallpaperService {
 			super.onVisibilityChanged(visible);
 			if(visible){
 				task.setPause(false);
-				// 变化所有粒子
-				// task.changeAll();
 			}else{
 				task.setPause(true);
 			}
