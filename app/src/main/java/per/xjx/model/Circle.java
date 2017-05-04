@@ -43,12 +43,13 @@ public class Circle {
 		paint.setShader(mRadialGradient);
 	}
 
-	private boolean increment = true;
-	private int pointSize = 0;
+	//private boolean increment = true;
+	//private int pointSize = 0;
 
 	public void drawSelf(Canvas canvas) {
 
 		// 更新圆形渐变
+		/*
 		if(increment){
 			pointSize++;
 			if(pointSize >= radius){
@@ -60,8 +61,9 @@ public class Circle {
 				increment = true;
 			}
 		}
+		*/
 
-		mRadialGradient = new RadialGradient(cx, cy, pointSize, colors,
+		mRadialGradient = new RadialGradient(cx, cy, radius, colors,
 				new float[] { 0.05f, 0.4f, 1 },
 				android.graphics.Shader.TileMode.CLAMP);
 		paint.setShader(mRadialGradient);
