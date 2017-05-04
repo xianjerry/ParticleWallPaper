@@ -1,8 +1,5 @@
 package per.xjx.core;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import per.xjx.global.Application;
 import per.xjx.utils.CircleUtils;
 
