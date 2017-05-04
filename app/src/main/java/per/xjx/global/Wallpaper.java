@@ -1,11 +1,10 @@
 package per.xjx.global;
 
 import per.xjx.core.DrawCore;
+import per.xjx.core.DrawManager;
+
 import android.os.Bundle;
-import android.os.Handler;
 import android.service.wallpaper.WallpaperService;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -32,10 +31,11 @@ public class Wallpaper extends WallpaperService {
 	public class DrawGameEngine extends Engine {
 
 		private DrawCore task = null;
+		private DrawManager draw = new DrawManager(10);
 
 		public DrawGameEngine() {
 
-			task = new DrawCore(getSurfaceHolder());
+			task = new DrawCore(getSurfaceHolder(), draw);
 		}
 
 		@Override
@@ -52,10 +52,13 @@ public class Wallpaper extends WallpaperService {
 		@Override
 		public void onVisibilityChanged(boolean visible) {
 			super.onVisibilityChanged(visible);
+
 			if(visible){
-				task.setPause(false);
+				task.setStop();
+				task = new DrawCore(getSurfaceHolder(), draw);
+				task.start();
 			}else{
-				task.setPause(true);
+				task.setStop();
 			}
 		}
 
@@ -91,13 +94,15 @@ public class Wallpaper extends WallpaperService {
 		@Override
 		public void onSurfaceCreated(SurfaceHolder holder) {
 			super.onSurfaceCreated(holder);
+
 			task.start();
 		}
 
 		@Override
 		public void onSurfaceDestroyed(SurfaceHolder holder) {
 			super.onSurfaceDestroyed(holder);
-			task.setStop(true);
+
+			task.setStop();
 		}
 
 	}

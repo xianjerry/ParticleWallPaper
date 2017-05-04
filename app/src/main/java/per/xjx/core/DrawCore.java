@@ -1,22 +1,23 @@
 package per.xjx.core;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import per.xjx.global.Application;
 import per.xjx.utils.CircleUtils;
 
 public class DrawCore extends Thread {
-	
-	private boolean pause = false;
+
 	private boolean stop = false;
 	
 	private android.view.SurfaceHolder holder;
-	private float d = 0;
+	private float rotate = 0;
 	
 	private DrawManager circleManager;
 
-	public DrawCore(android.view.SurfaceHolder holder) {
+	public DrawCore(android.view.SurfaceHolder holder, DrawManager drawManager) {
 		this.holder = holder;
-		
-		circleManager = new DrawManager(10);
+		circleManager = drawManager;
 	}
 
 	@Override
@@ -27,50 +28,35 @@ public class DrawCore extends Thread {
 			if (stop == true) {
 				break;
 			}
-			if (pause == false) {
-				try {
-					canvas = holder.lockCanvas(null);
-					
-					// 旋转画布
-					canvas.rotate(d, Application.getInstance().getDisplayWidth() / 2,
-							Application.getInstance().getDisplayHeight() / 2);
-					d += 0.5;
-					
-					// 绘制的关键步骤
-					canvas.drawARGB((int) (0.05 * 256), 0, 0, 0); // 绘制有透明度的黑色背景
-					circleManager.drawContent(canvas); // 绘制粒子
 
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					if (canvas != null) {
-						this.holder.unlockCanvasAndPost(canvas);
-					}
-				}
-			} else {
-				try {
-					sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+			try {
+				canvas = holder.lockCanvas(null);
+
+				// 旋转画布
+				canvas.rotate(rotate, Application.getInstance().getDisplayWidth() / 2,
+						Application.getInstance().getDisplayHeight() / 2);
+				rotate += 0.5;
+
+				// 绘制的关键步骤
+				canvas.drawARGB((int) (0.05 * 256), 0, 0, 0); // 绘制有透明度的黑色背景
+				circleManager.drawContent(canvas); // 绘制粒子
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (canvas != null) {
+					this.holder.unlockCanvasAndPost(canvas);
 				}
 			}
+
 		}
+
+		holder = null;
+		circleManager = null;
 	}
 
-	public boolean isPause() {
-		return pause;
-	}
-
-	public void setPause(boolean pause) {
-		this.pause = pause;
-	}
-
-	public boolean isStop() {
-		return stop;
-	}
-
-	public void setStop(boolean stop) {
-		this.stop = stop;
+	public void setStop() {
+		this.stop = true;
 	}
 	
 	public void changeAll(){
