@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 
+import java.util.Random;
+
 import per.xjx.global.Application;
 
 /**
@@ -41,10 +43,25 @@ public class Circle {
 		paint.setShader(mRadialGradient);
 	}
 
+	private boolean increment = true;
+	private int pointSize = 0;
+
 	public void drawSelf(Canvas canvas) {
 
 		// 更新圆形渐变
-		mRadialGradient = new RadialGradient(cx, cy, radius, colors,
+		if(increment){
+			pointSize++;
+			if(pointSize >= radius){
+				increment = false;
+			}
+		}else{
+			pointSize--;
+			if(pointSize <= 0){
+				increment = true;
+			}
+		}
+
+		mRadialGradient = new RadialGradient(cx, cy, pointSize, colors,
 				new float[] { 0.05f, 0.4f, 1 },
 				android.graphics.Shader.TileMode.CLAMP);
 		paint.setShader(mRadialGradient);
