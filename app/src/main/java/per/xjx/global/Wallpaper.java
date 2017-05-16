@@ -54,11 +54,13 @@ public class Wallpaper extends WallpaperService {
 			super.onVisibilityChanged(visible);
 
 			if(visible){
-				task.setStop();
+				if(task != null)
+					task.setStop();
 				task = new DrawCore(getSurfaceHolder(), draw);
 				task.start();
 			}else{
 				task.setStop();
+				task = null;
 			}
 		}
 
@@ -102,7 +104,8 @@ public class Wallpaper extends WallpaperService {
 		public void onSurfaceDestroyed(SurfaceHolder holder) {
 			super.onSurfaceDestroyed(holder);
 
-			task.setStop();
+			if(task != null)
+				task.setStop();
 		}
 
 	}

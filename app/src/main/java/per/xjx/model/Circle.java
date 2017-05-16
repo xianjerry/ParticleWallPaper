@@ -50,12 +50,12 @@ public class Circle {
 		if(Application.getInstance().getAppConfig().isAutoChangeRadius()){
 			if(increment){
 				pointSize++;
-				if(pointSize >= radius){
+				if(pointSize > radius){
 					increment = false;
 				}
 			}else{
 				pointSize--;
-				if(pointSize <= 0){
+				if(pointSize <= 1){
 					increment = true;
 				}
 			}
