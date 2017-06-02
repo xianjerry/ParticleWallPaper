@@ -59,8 +59,10 @@ public class Wallpaper extends WallpaperService {
 				task = new DrawCore(getSurfaceHolder(), draw);
 				task.start();
 			}else{
-				task.setStop();
-				task = null;
+				if(task != null){
+					task.setStop();
+					task = null;
+				}
 			}
 		}
 
@@ -69,7 +71,9 @@ public class Wallpaper extends WallpaperService {
 			super.onTouchEvent(event);
 
 			if(event.getAction() == MotionEvent.ACTION_UP){
-				task.changeAll();
+				if(task != null){
+					task.changeAll();
+				}
 			}
 		}
 
@@ -97,7 +101,9 @@ public class Wallpaper extends WallpaperService {
 		public void onSurfaceCreated(SurfaceHolder holder) {
 			super.onSurfaceCreated(holder);
 
-			task.start();
+			if(task != null) {
+				task.start();
+			}
 		}
 
 		@Override
