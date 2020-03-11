@@ -31,7 +31,7 @@ public class Wallpaper extends WallpaperService {
 	public class DrawGameEngine extends Engine {
 
 		private DrawCore task = null;
-		private DrawManager draw = new DrawManager(10);
+		private DrawManager draw = new DrawManager(22);
 
 		public DrawGameEngine() {
 

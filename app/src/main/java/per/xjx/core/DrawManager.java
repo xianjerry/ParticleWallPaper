@@ -27,7 +27,7 @@ public class DrawManager {
 			Random r = new Random();
 
 			float radius = r.nextFloat()
-					* (Application.getInstance().getDisplayWidth() / 15) + 20;
+					* (Application.getInstance().getDisplayWidth() / 15) + 30;
 			int[] colors = {
 					Color.WHITE,
 					Color.argb(r.nextInt(256), r.nextInt(256), r.nextInt(256),
